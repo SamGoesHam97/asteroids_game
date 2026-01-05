@@ -53,6 +53,7 @@ def main():
                 if asteroid.collides_with(shot):
                     log_event("asteroid_shot")
                     shot.kill()
+
                     new_asteroids = asteroid.split()
                     if new_asteroids:
                         asteroid1, asteroid2 = new_asteroids
