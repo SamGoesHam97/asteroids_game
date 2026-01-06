@@ -18,7 +18,8 @@ class Asteroid(CircleShape):
         self.kill()
 
         if self.radius <= ASTEROID_MIN_RADIUS:
-            return None
+            points = 25
+            return (None, points)
 
         log_event("asteroid_split")
 
@@ -34,4 +35,11 @@ class Asteroid(CircleShape):
         asteroid1.velocity = rotated_velocity1 * 1.2
         asteroid2.velocity = rotated_velocity2 * 1.2
 
-        return (asteroid1, asteroid2)
+        if self.radius == 60:
+            points = 100
+        elif self.radius == 40:
+            points = 50
+        else:
+            points = 0
+
+        return ((asteroid1, asteroid2), points)

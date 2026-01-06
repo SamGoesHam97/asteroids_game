@@ -13,6 +13,7 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
+    font = pygame.font.SysFont(None, 24)
     print("Starting Asteroids with pygame version: 2.6.1")
     print("Screen width: 1280")
     print("Screen height: 720")
@@ -54,8 +55,10 @@ def main():
                     log_event("asteroid_shot")
                     shot.kill()
 
-                    new_asteroids = asteroid.split()
+                    new_asteroids, points = asteroid.split()
+                    player.score += points
                     if new_asteroids:
+                        asteroids.add(*new_asteroids)
                         asteroid1, asteroid2 = new_asteroids
                         asteroids.add(asteroid1)
                         asteroids.add(asteroid2)
@@ -63,6 +66,8 @@ def main():
         screen.fill("black")
         for sprite in drawable:
             sprite.draw(screen)
+        score_text = font.render(f"Score: {player.score}", True, (255, 255, 255))
+        screen.blit(score_text, (10, 10))
         pygame.display.flip()
 
         dt = clock.tick(60) / 1000
