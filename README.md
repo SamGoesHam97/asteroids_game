@@ -1,0 +1,1 @@
+Welcome to the first game that I've ever made using my own code with Python! This game is called "Asteroids". The goal of this game is to shoot as many asteroids as you can without getting hit by one! If you get hit by an asteroid then the game ends! Thanks for playing!
